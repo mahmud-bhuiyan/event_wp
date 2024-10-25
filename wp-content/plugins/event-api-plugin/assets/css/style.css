@@ -1,25 +1,87 @@
 .event-container {
     max-width: 1200px;
     margin: 0 auto;
-    font-family: 'Roboto', Arial, sans-serif;
-    color: #333;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.event-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.event-search {
+    display: flex;
+    flex: 1 1 300px;
+}
+
+#event-search-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+}
+
+#event-search-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.3s ease;
+}
+
+#event-search-btn:hover {
+    background-color: #0056b3;
+}
+
+.event-sort,
+.event-filter {
+    flex: 0 1 200px;
+}
+
+.event-sort select,
+.event-filter select {
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px auto;
 }
 
 .view-toggle {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
     margin-bottom: 20px;
 }
 
+.view-toggle-label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
 .toggle-btn {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    padding: 8px 16px;
+    background-color: #6B7A8F;
+    border: 1px solid #ddd;
+    padding: 6px 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    font-size: 14px;
     display: flex;
     align-items: center;
-    font-size: 14px;
+    transition: all 0.3s ease;
 }
 
 .toggle-btn:first-child {
@@ -31,42 +93,41 @@
 }
 
 .toggle-btn.active {
-    background-color: #007bff;
+    background-color: #00A3E0;
     color: white;
-    border-color: #007bff;
+    border-color: #343a40;
 }
 
 .toggle-btn .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
     margin-right: 5px;
 }
 
 .events-wrapper {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
-.events-wrapper.grid-view {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-}
-
-.events-wrapper.list-view {
-    grid-template-columns: 1fr;
+.grid-view .event-card {
+    flex: 0 0 calc(33.333% - 20px);
 }
 
 .event-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 
 .event-card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .event-card-link {
@@ -74,78 +135,153 @@
     color: inherit;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    flex: 1;
 }
 
 .event-content {
     padding: 20px;
-    flex-grow: 1;
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
 
 .event-category {
-    font-size: 0.8em;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
     display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
     margin-bottom: 10px;
-    align-self: flex-start;
 }
 
 .event-title {
-    font-size: 1.4em;
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
+    font-size: 20px;
     color: #333;
 }
 
 .event-description {
+    font-size: 14px;
     color: #666;
     margin-bottom: 15px;
-    font-size: 0.95em;
-    line-height: 1.5;
-    flex-grow: 1;
+    flex: 1;
 }
 
 .event-details {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    font-size: 0.9em;
-    color: #555;
+    font-size: 14px;
+    color: #888;
     margin-top: auto;
 }
 
 .event-details span {
     display: flex;
     align-items: center;
+    margin-bottom: 5px;
 }
 
 .event-details .dashicons {
-    margin-right: 5px;
+    margin-right: 8px;
     font-size: 18px;
     width: 18px;
     height: 18px;
-    color: #555;
 }
 
 .view-event-btn {
     display: block;
-    color: white;
-    padding: 12px 20px;
-    text-decoration: none;
-    transition: opacity 0.3s ease;
-    font-weight: 500;
     text-align: center;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
 }
 
 .view-event-btn:hover {
-    opacity: 0.9;
+    background-color: #218838;
+}
+
+.list-view .event-card {
+    flex: 0 0 100%;
+    flex-direction: row;
+}
+
+.list-view .event-card-link {
+    flex-direction: row;
+    flex: 1;
+}
+
+.list-view .event-content {
+    flex: 1;
+}
+
+.list-view .view-event-btn {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    align-self: stretch;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.event-modal-content h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.event-modal-content .event-category {
+    margin-bottom: 15px;
+}
+
+.event-modal-content .event-description {
+    margin-bottom: 20px;
+}
+
+.event-modal-content .event-details p {
+    margin: 5px 0;
 }
 
 .event-card a,
@@ -155,8 +291,81 @@
     text-decoration: none !important;
 }
 
+.event-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.pagination-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    margin: 0 5px 5px;
+    border: 1px solid #ddd;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.pagination-link:hover {
+    background-color: #f5f5f5;
+}
+
+.pagination-link.current {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination-link.disabled {
+    color: #ccc;
+    pointer-events: none;
+}
+
+@media (max-width: 480px) {
+    .event-pagination {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pagination-link {
+        margin: 5px 0;
+    }
+}
+
 @media (max-width: 768px) {
-    .events-wrapper.grid-view {
-        grid-template-columns: 1fr;
+    .grid-view .event-card {
+        flex: 0 0 calc(50% - 20px);
+    }
+    
+    .list-view .event-card-link {
+        flex-direction: column;
+    }
+    
+    .list-view .view-event-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-view .event-card {
+        flex: 0 0 100%;
+    }
+    
+    .event-controls {
+        flex-direction: column;
+    }
+    
+    .event-search,
+    .event-sort,
+    .event-filter {
+        flex: 1 1 auto;
+        margin-bottom: 10px;
     }
 }

@@ -238,7 +238,7 @@ class Admin_Menu_Handler {
                 var eventId = $('#edit-event-id').val();
 
                 $.ajax({
-                    url: `http://127.0.0.1:8000/api/v1/events/${eventId}`,
+                    url: 'http://127.0.0.1:8000/api/v1/events/' + eventId,
                     type: 'PUT',
                     data: formData,
                     success: function(response) {
@@ -257,7 +257,7 @@ class Admin_Menu_Handler {
                     var eventId = $(this).data('id');
 
                     $.ajax({
-                        url: `http://127.0.0.1:8000/api/v1/events/${eventId}`,
+                        url: 'http://127.0.0.1:8000/api/v1/events/' + eventId,
                         type: 'DELETE',
                         success: function(response) {
                             alert('Event deleted successfully!');
@@ -426,4 +426,3 @@ class Admin_Menu_Handler {
     }
  
 }
- 
